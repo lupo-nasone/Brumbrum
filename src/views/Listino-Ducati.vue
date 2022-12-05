@@ -215,7 +215,11 @@ function click(index) {
       top: 50%;
       transform: translate(-50%, -50%);
     }
-    
+
+    .foot{
+      bottom: 10px;
+    }
+
   }
 
   @media screen and (max-width: 450px) {
