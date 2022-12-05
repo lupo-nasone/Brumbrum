@@ -189,7 +189,36 @@ function click(index) {
     width: 100%;
   }
 
-  @media screen and (max-width: 992px) {
+  @media screen and (max-width: 1000px) {
+    .info{
+      display: none;
+    }
+
+    .title{
+      width: 100%;
+      text-align: center;
+    }
+    .moto{
+      position: absolute;
+      width: 100%;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .moto img{
+      width: 100%;
+    }
+    .moto-mini{
+      position: absolute;
+      width: 100%;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    
+  }
+
+  @media screen and (max-width: 450px) {
   .title{
     width: 100%;
     text-align: center;
