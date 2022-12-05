@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import AppView from '../App.vue'
 import HomeView from '../views/Homeviw.vue'
 import ListinoDucatiView from "../views/Listino-Ducati.vue";
+import ListinoYamahaView from "../views/Listino-Yamaha.vue";
 import ListinoKawasakiView from "../views/Listino-Kawasaki.vue";
 import MarcheView from "../views/Marche.vue";
 
@@ -22,6 +23,11 @@ const router = createRouter({
           path: '/listino-Ducati',
           name: 'listino-Ducati',
           component: ListinoDucatiView,
+        },
+        {
+          path: '/listino-Yamaha',
+          name: 'listino-Yamaha',
+          component: ListinoYamahaView,
         },
         {
           path: '/listino-Kawasaki',

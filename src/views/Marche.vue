@@ -22,7 +22,7 @@ let marche = ([
     logo: LogoYamaha,
     nation: Giappone,
     nationa: "Giappone",
-    nmodelli: "0",
+    nmodelli: "1",
     link: '/Listino-Yamaha',
   },
   {
