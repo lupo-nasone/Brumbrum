@@ -217,7 +217,7 @@ function click(index) {
     }
 
     .foot{
-      bottom: 10px;
+      bottom: 100px;
     }
 
   }
