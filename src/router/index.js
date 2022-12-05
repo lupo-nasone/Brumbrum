@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import AppView from '../App.vue'
 import HomeView from '../views/Homeviw.vue'
-import ListinoView from "../views/Listino-Ducati.vue";
+import ListinoDucatiView from "../views/Listino-Ducati.vue";
+import ListinoKawasakiView from "../views/Listino-Kawasaki.vue";
 import MarcheView from "../views/Marche.vue";
 
 const router = createRouter({
@@ -20,8 +21,14 @@ const router = createRouter({
         {
           path: '/listino-Ducati',
           name: 'listino-Ducati',
-          component: ListinoView,
+          component: ListinoDucatiView,
+        },
+        {
+          path: '/listino-Kawasaki',
+          name: 'listino-Kawasaki',
+          component: ListinoKawasakiView,
         }
+
       ],
       
     },

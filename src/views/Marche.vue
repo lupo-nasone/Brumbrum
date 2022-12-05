@@ -3,6 +3,7 @@ import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from '../components/HelloWorld.vue'
 import LogoDucati from '../../src/assets/Loghi/Ducati-Logo.png'
 import LogoYamaha from '../../src/assets/Loghi/yamaha.png'
+import LogoKawasaki from '../../src/assets/Loghi/Kawasaki-Logo.png'
 
 import Italia from '../../src/assets/Flag/italia.png'
 import Giappone from '../../src/assets/Flag/giappone.png'  
@@ -13,16 +14,24 @@ let marche = ([
     logo: LogoDucati,
     nation: Italia,
     nationa: "Italia",
-    nmodelli: "6",
-    link: 'http://localhost:5174/Listino-Ducati',
+    nmodelli: "5",
+    link: '/Listino-Ducati',
   },
   {
     name: 'Yamaha',
     logo: LogoYamaha,
     nation: Giappone,
     nationa: "Giappone",
-    nmodelli: "10",
+    nmodelli: "0",
     link: '/Listino-Yamaha',
+  },
+  {
+    name: 'Kawasaki',
+    logo: LogoKawasaki,
+    nation: Giappone,
+    nationa: "Giappone",
+    nmodelli: "3",
+    link: '/Listino-Kawasaki',
   },
 ])
 let a = 0;
@@ -35,7 +44,7 @@ function quale(index) {
 <template>
 
   <div class="container">
-     <router-link to="listino-Ducati" v-for="(items, index) in marche" class="no" @click="quale(index)" :key="index">
+     <router-link :to="marche[index].link" v-for="(items, index) in marche" class="no" @click="quale(index)" :key="index">
       <div class="marca">
       <div class="a">
         <div class="logo">

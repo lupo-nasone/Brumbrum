@@ -2,47 +2,35 @@
 import { RouterView, RouterLink } from "vue-router";    
 import { ref } from "vue";
 
-import Logo from "../assets/Loghi/Ducati-Logo.png";
+import Logo from "../assets/Loghi/Kawasaki-Logo.png";
 
-import PanigaleV2 from "../assets/Moto/Ducati/PanigaleV2.png";
-import PanigaleV4 from "../assets/Moto/Ducati/PanigaleV4.png";
-import PanigaleV4S from "../assets/Moto/Ducati/PanigaleV4s.png";
-import PanigaleV4SP2 from "../assets/Moto/Ducati/PanigaleV4sp2.png";
-import PanigaleV4R from "../assets/Moto/Ducati/PanigaleV4r.png";
+import ZX10R from "../assets/Moto/Kawasaki/NinjaZX10R.png";
+import Ninja650 from "../assets/Moto/Kawasaki/Ninja650.png";
+import Ninja400 from "../assets/Moto/Kawasaki/Ninja400.png";
+
 
 let variabile = 0;
 
 let moto = ([
   {
-    image: PanigaleV2,
-    nome: "PanigaleV2",
+    image: ZX10R,
+    nome: "ZX-10R",
     anno: "2023",
-    cilindrata: "955 cc",
-  },
-  {
-    image: PanigaleV4,
-    nome: "PanigaleV4",
-    anno: "2023",
-    cilindrata: "1103 cc",
-  },
-  {
-    image: PanigaleV4S,
-    nome: "PanigaleV4 S",
-    anno: "2023",
-    cilindrata: "1103 cc",
-  },
-  {
-    image: PanigaleV4SP2,
-    nome: "PanigaleV4 SP2",
-    anno: "2023",
-    cilindrata: "1103 cc",
-  },
-  {
-    image: PanigaleV4R,
-    nome: "PanigaleV4 R",
-    anno: "2023",
-    cilindrata: "1103 cc",
-  },
+    cilindrata: "998 cc",
+    },
+    {
+        image: Ninja650,
+        nome: "Ninja 650",
+        anno: "2023",
+        cilindrata: "649 cc",
+    },
+    {
+        image: Ninja400,
+        nome: "Ninja 400",
+        anno: "2023",
+        cilindrata: "399 cc",
+    }
+  
 
 ])
 
