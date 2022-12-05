@@ -16,7 +16,7 @@ import { RouterLink } from 'vue-router';
 
 <style scoped>
     .header{
-        height: 10vh;
+        height: 5vh;
         background-color: #181818;
         text-align: center;
         padding: 20px;
