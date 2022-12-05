@@ -130,9 +130,9 @@ function click(index) {
   padding: 20px;
 }
 .a{
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(5px);
   width: 300px;
-  height: 200px;
+  height: 20vh;
   flex-shrink: 0;
 }
 .foot{
