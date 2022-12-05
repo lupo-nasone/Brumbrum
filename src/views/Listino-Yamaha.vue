@@ -102,9 +102,8 @@ function click(index) {
   padding: 20px;
 }
 .a{
-  backdrop-filter: blur(10px);
   width: 300px;
-  height: 200px;
+  height: 20vh;
   flex-shrink: 0;
 }
 .foot{
@@ -161,7 +160,43 @@ function click(index) {
     width: 100%;
   }
 
-  @media screen and (max-width: 992px) {
+  @media screen and (max-width: 1000px) {
+    .info{
+      display: none;
+    }
+
+    .title{
+      width: 100%;
+      text-align: center;
+    }
+    .title h1{
+      font-size: 50px;
+    }
+    .moto{
+      position: absolute;
+      width: 100%;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .moto img{
+      width: 100%;
+    }
+    .moto-mini{
+      position: absolute;
+      width: 100%;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .foot{
+      bottom: 50px;
+    }
+
+  }
+
+  @media screen and (max-width: 450px) {
   .title{
     width: 100%;
     text-align: center;

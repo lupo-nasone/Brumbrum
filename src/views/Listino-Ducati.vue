@@ -130,7 +130,6 @@ function click(index) {
   padding: 20px;
 }
 .a{
-  backdrop-filter: blur(5px);
   width: 300px;
   height: 20vh;
   flex-shrink: 0;
@@ -198,6 +197,9 @@ function click(index) {
       width: 100%;
       text-align: center;
     }
+    .title h1{
+      font-size: 50px;
+    }
     .moto{
       position: absolute;
       width: 100%;
@@ -217,7 +219,7 @@ function click(index) {
     }
 
     .foot{
-      bottom: 100px;
+      bottom: 50px;
     }
 
   }
