@@ -1,6 +1,5 @@
 <script setup>
-import { RouterView, RouterLink } from "vue-router";    
-import { ref } from "vue";
+
 
 import Logo from "../assets/Loghi/Ducati-Logo.png";
 
@@ -10,49 +9,143 @@ import PanigaleV4S from "../assets/Moto/Ducati/PanigaleV4s.png";
 import PanigaleV4SP2 from "../assets/Moto/Ducati/PanigaleV4sp2.png";
 import PanigaleV4R from "../assets/Moto/Ducati/PanigaleV4r.png";
 
+
+
+
+import ZX10R from "../assets/Moto/Kawasaki/NinjaZX10R.png";
+import Ninja650 from "../assets/Moto/Kawasaki/Ninja650.png";
+import Ninja400 from "../assets/Moto/Kawasaki/Ninja400.png";
+
+import { RouterView, RouterLink } from "vue-router";    
+import { ref } from "vue";
+import { useStore } from '../store/store.js'
+const store = useStore()
+
+
+
+console.log(store.index)
+
 let variabile = 0;
 
 let moto = ([
   {
-    image: PanigaleV2,
-    nome: "PanigaleV2",
-    anno: "2023",
-    cilindrata: "955 cc",
+    nome: "Ducati",
+    moto: [
+      {
+        image: PanigaleV2,
+        nome: "PanigaleV2",
+        anno: "2023",
+        potenza: "155 CV",
+        cilindrata: "955 cc",
+        PesoaSecco: "176 kg",
+      },
+      {
+        image: PanigaleV4,
+        nome: "PanigaleV4",
+        anno: "2023",
+        potenza: "215,5 CV",
+        cilindrata: "1100 cc",
+        PesoaSecco: "175 kg",
+      },
+      {
+        image: PanigaleV4S,
+        nome: "PanigaleV4 S",
+        anno: "2023",
+        potenza: "215,5 CV",
+        cilindrata: "998 cc",
+        PesoaSecco: "174 kg",
+      },
+      {
+        image: PanigaleV4SP2,
+        nome: "PanigaleV4 SP2",
+        anno: "2023",
+        potenza: "215,5 CV",
+        cilindrata: "1103 cc",
+        PesoaSecco: "173 kg",
+      },
+      {
+        image: PanigaleV4R,
+        nome: "PanigaleV4 R",
+        anno: "2023",
+        potenza: "237 CV",
+        cilindrata: "998cc",
+        PesoaSecco: "167 kg",
+      },
+    ]
   },
   {
-    image: PanigaleV4,
-    nome: "PanigaleV4",
+    nome: "Kawasaki",
+    moto: [
+    {
+    image: ZX10R,
+    nome: "ZX-10R",
     anno: "2023",
-    cilindrata: "1103 cc",
+    cilindrata: "998 cc",
+    potenza: "203 CV",
+    PesoaSecco: "206 kg",
+    },
+    {
+        image: Ninja650,
+        nome: "Ninja 650",
+        anno: "2023",
+      cilindrata: "649 cc",
+      potenza: "60 CV",
+      PesoaSecco: "174 kg",
+    },
+    {
+        image: Ninja400,
+        nome: "Ninja 400",
+        anno: "2023",
+      cilindrata: "399 cc",
+      potenza: "46 CV",
+      PesoaSecco: "169 kg",
+    }
+    ]
   },
   {
-    image: PanigaleV4S,
-    nome: "PanigaleV4 S",
-    anno: "2023",
-    cilindrata: "1103 cc",
-  },
-  {
-    image: PanigaleV4SP2,
-    nome: "PanigaleV4 SP2",
-    anno: "2023",
-    cilindrata: "1103 cc",
-  },
-  {
-    image: PanigaleV4R,
-    nome: "PanigaleV4 R",
-    anno: "2023",
-    cilindrata: "1103 cc",
-  },
+    nome: "Yamaha",
+    moto: [
+      {
+        image: PanigaleV2,
+        nome: "PanigaleV2",
+        anno: "2023",
+        potenza: "155 CV",
+        coppia: "10,6 Kgm",
+        PesoaSecco: "176 kg",
+      },
+    ]
+  }
 
 ])
 
 function click(index) {
   variabile = index;
-  console.log(index);
-  document.getElementById("a").src = moto[index].image;
-  document.getElementById("b").innerHTML = moto[index].nome;
-  document.getElementById("c").innerHTML = moto[index].anno;
+  document.getElementById("a").src = moto[store.index].moto[index].image;
+  //animate the image when click
+  document.getElementById("a").animate([
+    // keyframes
+    { transform: 'scale(1)' }, 
+    { transform: 'scale(1.01)' },
+    { transform: 'scale(1)' }
+  ], { 
+    // timing options
+    duration: 500,
+    iterations: 1
+  });
+
+
+  document.getElementById("b").innerHTML = moto[store.index].moto[index].nome;
+  document.getElementById("c").innerHTML = moto[store.index].moto[index].anno;
+  document.getElementById("d").innerHTML = moto[store.index].moto[index].cilindrata;
+  document.getElementById("e").innerHTML = moto[store.index].moto[index].potenza;
+  document.getElementById("f").innerHTML = moto[store.index].moto[index].PesoaSecco;
+
 }
+
+function info() {
+  console.log("ciao")
+}
+
 
 
 </script>
@@ -60,7 +153,7 @@ function click(index) {
 <template>
   <div class="container">
     <div class="moto">
-      <img :src="moto[0].image" id="a"/>
+      <img :src="moto[0].image" id="a" @click="info" />
     </div>
     
     <div class="title">
@@ -70,8 +163,8 @@ function click(index) {
     </div>
 
 
-    <div class="foot" id="prova">
-      <div class="a" v-for=" (items, index) in moto" :key="index" @click="click(index)">
+    <div class="foot">
+      <div class="a" v-for=" (items, index) in moto[store.index].moto" :key="index" @click="click(index)">
         <div class="title-mini">
           <div class="moto-mini">
             <img :src="items.image"/>
@@ -84,20 +177,20 @@ function click(index) {
   </div>
 
 
-  <div class="info">
+  <div class="info" id="informazioni">
     <div class="sin">
       <b><h2>Cilindrata</h2></b>
-      <h1>1103 cc</h1>
+      <h1 id="d">{{moto[variabile].potenza}}</h1>
 
       <br><br><br>
 
-      <b><h2>Cilindrata</h2></b>
-      <h1>1103 cc</h1>
+      <b><h2>Potenza</h2></b>
+      <h1 id="e">{{moto[variabile].potenza}}</h1>
 
       <br><br><br>
 
-      <b><h2>Cilindrata</h2></b>
-      <h1>1103 cc</h1>
+      <b><h2>Peso</h2></b>
+      <h1 id="f">{{moto[variabile].PesoaSecco}}</h1>
     </div>
     <div class="des">
 
@@ -106,6 +199,10 @@ function click(index) {
 </template>
 
 <style scoped>
+
+.visibile{
+  display: block!important;;
+}
 .sin{
   width: 50%;
   height: 100%;

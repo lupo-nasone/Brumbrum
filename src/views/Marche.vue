@@ -1,12 +1,22 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+
+
 import HelloWorld from '../components/HelloWorld.vue'
 import LogoDucati from '../../src/assets/Loghi/Ducati-Logo.png'
 import LogoYamaha from '../../src/assets/Loghi/yamaha.png'
 import LogoKawasaki from '../../src/assets/Loghi/Kawasaki-Logo.png'
 
 import Italia from '../../src/assets/Flag/italia.png'
-import Giappone from '../../src/assets/Flag/giappone.png'  
+import Giappone from '../../src/assets/Flag/giappone.png' 
+
+
+
+
+import { RouterLink, RouterView } from 'vue-router'
+import { useStore } from '../store/store.js'
+const store = useStore()
+
+
 
 let marche = ([
   {
@@ -36,15 +46,17 @@ let marche = ([
 ])
 let a = 0;
 function quale(index) {
+  store.set(index)
   a = index;
   console.log(index);
+  
 }
 </script>
 
 <template>
 
   <div class="container">
-     <router-link :to="marche[index].link" v-for="(items, index) in marche" class="no" @click="quale(index)" :key="index">
+     <router-link :to="'/Listino-Ducati'" v-for="(items, index) in marche" class="no" @click="quale(index)" :key="index">
       <div class="marca">
       <div class="a">
         <div class="logo">
@@ -131,7 +143,7 @@ p{
     justify-content: center;
     align-items: center;
     width: 100%!important;  
-    height: 100vh;
+    height: 80vh;
 }
 
 .left{
