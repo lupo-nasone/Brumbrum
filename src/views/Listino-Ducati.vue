@@ -248,7 +248,7 @@ function info() {
   .title{
     
     width: 50%;
-    height: 50%;
+    height: 10vh;
     padding: 30px;
     font-size: 40px;
   }
