@@ -5,6 +5,8 @@ import HelloWorld from '../components/HelloWorld.vue'
 import LogoDucati from '../../src/assets/Loghi/Ducati-Logo.png'
 import LogoYamaha from '../../src/assets/Loghi/yamaha.png'
 import LogoKawasaki from '../../src/assets/Loghi/Kawasaki-Logo.png'
+import LogoKeeway from '../../src/assets/Loghi/Keeway-Logo.png'
+import LogoWottan from '../../src/assets/Loghi/Wottan-Logo.png'
 
 import Italia from '../../src/assets/Flag/italia.png'
 import Giappone from '../../src/assets/Flag/giappone.png' 
@@ -32,7 +34,7 @@ let marche = ([
     logo: LogoYamaha,
     nation: Giappone,
     nationa: "Giappone",
-    nmodelli: "1",
+    nmodelli: "4",
     link: '/Listino-Yamaha',
   },
   {
@@ -43,6 +45,22 @@ let marche = ([
     nmodelli: "3",
     link: '/Listino-Kawasaki',
   },
+  {
+    name: 'Keeway',
+    logo: LogoKeeway,
+    nation: Italia,
+    nationa: "Italia",
+    nmodelli: "2",
+    link: '/Listino-Keeway',
+  },
+  {
+    name: 'Wottan',
+    logo: LogoWottan,
+    nation: Italia,
+    nationa: "Italia",
+    nmodelli: "3",
+    link: '/Listino-Wottan',
+  }
 ])
 let a = 0;
 function quale(index) {

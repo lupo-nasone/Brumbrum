@@ -16,6 +16,18 @@ import ZX10R from "../assets/Moto/Kawasaki/NinjaZX10R.png";
 import Ninja650 from "../assets/Moto/Kawasaki/Ninja650.png";
 import Ninja400 from "../assets/Moto/Kawasaki/Ninja400.png";
 
+import R125 from "../assets/Moto/Yamaha/R125.png";
+import R3 from "../assets/Moto/Yamaha/r3.png";
+import R6 from "../assets/Moto/Yamaha/r6.png";
+import R1 from "../assets/Moto/Yamaha/r1.png";
+
+import RKF125 from "../assets/Moto/keeway/rkf.png";
+import Superleggera from "../assets/Moto/keeway/superlight.png";
+
+import wottangp1 from "../assets/Moto/Wottan/wottangp1.png";
+import wottangp2 from "../assets/Moto/Wottan/wottangp2.png";
+import rebbe from "../assets/Moto/Wottan/rebbe.png";
+
 import { RouterView, RouterLink } from "vue-router";    
 import { ref } from "vue";
 import { useStore } from '../store/store.js'
@@ -74,6 +86,43 @@ let moto = ([
     ]
   },
   {
+    nome: "Yamaha",
+    moto: [
+      {
+        image: R125,
+        nome: "R-125",
+        anno: "2023",
+        cilindrata: "399 cc",
+      potenza: "46 CV",
+      PesoaSecco: "169 kg",
+      },
+      {
+        image: R3,
+        nome: "R-3",
+        anno: "2023",
+        cilindrata: "125 cc",
+      potenza: "11 CV",
+      PesoaSecco: "142 kg",
+      },
+      {
+        image: R6,
+        nome: "R-6",
+        anno: "2023",
+       cilindrata: "599 cc",
+      potenza: "118 CV",
+      PesoaSecco: "190 kg",
+      },
+      {
+        image: R1,
+        nome: "R-1",
+        anno: "2023",
+        cilindrata: "998 cc",
+      potenza: "200 CV",
+      PesoaSecco: "180 kg",
+      },
+    ]
+  },
+  {
     nome: "Kawasaki",
     moto: [
     {
@@ -103,18 +152,56 @@ let moto = ([
     ]
   },
   {
-    nome: "Yamaha",
+    nome: "Keeway",
     moto: [
       {
-        image: PanigaleV2,
-        nome: "PanigaleV2",
+        image: RKF125,
+        nome: "RKF 125",
         anno: "2023",
-        potenza: "155 CV",
-        coppia: "10,6 Kgm",
-        PesoaSecco: "176 kg",
+        cilindrata: "125 cc",
+        potenza: "12,8 CV",
+        PesoaSecco: "147 kg",
+      },
+      {
+        image: Superleggera,
+        nome: "Superleggera",
+        anno: "2023",
+        cilindrata: "125 cc",
+        potenza: "11 CV",
+        PesoaSecco: "142 kg",
       },
     ]
-  }
+  },
+  {
+    nome: "Wottan",
+    moto: [
+      {
+        image: wottangp1,
+        nome: "Wottan GP1",
+        anno: "2023",
+        cilindrata: "125 cc",
+        potenza: "12,6 CV",
+        PesoaSecco: "150 kg",
+      },
+      {
+        image: wottangp2,
+        nome: "Wottan GP2",
+        anno: "2023",
+        cilindrata: "125 cc",
+        potenza: "14 CV",
+        PesoaSecco: "155 kg",
+      },
+      {
+        image: rebbe,
+        nome: "Rebbe",
+        anno: "2023",
+        cilindrata: "125 cc",
+        potenza: "11 CV",
+        PesoaSecco: "155 kg",
+      },
+    ]
+  },
+  
 
 ])
 
@@ -153,13 +240,13 @@ function info() {
 <template>
   <div class="container">
     <div class="moto">
-      <img :src="moto[0].image" id="a" @click="info" />
+      <img :src="moto[store.index].moto[0].image" id="a" @click="info" />
     </div>
     
     <div class="title">
       <img :src="Logo">
-      <h1 id="b">{{moto[variabile].nome}}</h1>
-      <h4 id="c">{{moto[variabile].anno}}</h4>
+      <h1 id="b">{{moto[store.index].moto[0].nome}}</h1>
+      <h4 id="c">{{moto[store.index].moto[0].anno}}</h4>
     </div>
 
 
@@ -180,17 +267,17 @@ function info() {
   <div class="info" id="informazioni">
     <div class="sin">
       <b><h2>Cilindrata</h2></b>
-      <h1 id="d">{{moto[variabile].potenza}}</h1>
+      <h1 id="d">{{moto[store.index].moto[0].cilindrata}}</h1>
 
       <br><br><br>
 
       <b><h2>Potenza</h2></b>
-      <h1 id="e">{{moto[variabile].potenza}}</h1>
+      <h1 id="e">{{moto[store.index].moto[0].potenza}}</h1>
 
       <br><br><br>
 
       <b><h2>Peso</h2></b>
-      <h1 id="f">{{moto[variabile].PesoaSecco}}</h1>
+      <h1 id="f">{{moto[store.index].moto[0].PesoaSecco}}</h1>
     </div>
     <div class="des">
 
@@ -355,6 +442,10 @@ function info() {
   .a{
     width: 60%;
     height: 150px;
+  }
+
+  .container{
+    height: 90vh;
   }
 }
 </style>
