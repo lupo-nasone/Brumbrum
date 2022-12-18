@@ -197,5 +197,10 @@ p{
     height: 80%;
 }
 
+h1{
+  color: white;
+  margin-left: 20px;
+}
+
 
 </style>
