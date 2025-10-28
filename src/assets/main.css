@@ -1,5 +1,32 @@
 @import './base.css';
 
+/* Miglioramenti per la responsiveness */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Accessibilità - Focus visibile */
+*:focus {
+  outline: 2px solid #00ff88;
+  outline-offset: 2px;
+}
+
+/* Link styling responsive */
 a,
 .green {
   text-decoration: none;
@@ -10,6 +37,46 @@ a,
 @media (hover: hover) {
   a:hover {
     background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
+
+/* Miglioramenti per touch devices */
+@media (hover: none) and (pointer: coarse) {
+  /* Aumenta i target touch per migliore usabilità */
+  button, a, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Rimuove il delay sui tap */
+  * {
+    touch-action: manipulation;
+  }
+}
+
+/* Prevenire il zoom su input focus su iOS */
+@media screen and (max-width: 768px) {
+  input, select, textarea {
+    font-size: 16px;
+  }
+}
+
+/* Ottimizzazioni per prestazioni */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Loading state per immagini */
+img[src=""] {
+  visibility: hidden;
+}
+
+/* Scroll smooth solo se non è ridotto il movimento */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
   }
 }
 

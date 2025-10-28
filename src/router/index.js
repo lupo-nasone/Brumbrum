@@ -14,7 +14,7 @@ const router = createRouter({
       children: [
         {
           path: '/',
-          name: 'home',
+          name: 'marche',
           component: MarcheView,
         },
         {
@@ -22,7 +22,26 @@ const router = createRouter({
           name: 'listino-Ducati',
           component: ListinoDucatiView,
         },
-
+        {
+          path: '/listino-Yamaha',
+          name: 'listino-Yamaha',
+          component: MarcheView, // Temporaneo - rimanda alla home
+        },
+        {
+          path: '/listino-Kawasaki',
+          name: 'listino-Kawasaki',
+          component: MarcheView, // Temporaneo - rimanda alla home
+        },
+        {
+          path: '/listino-Keeway',
+          name: 'listino-Keeway',
+          component: MarcheView, // Temporaneo - rimanda alla home
+        },
+        {
+          path: '/listino-Wottan',
+          name: 'listino-Wottan',
+          component: MarcheView, // Temporaneo - rimanda alla home
+        },
       ],
       
     },

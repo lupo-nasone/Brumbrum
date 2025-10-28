@@ -1,0 +1,251 @@
+/* Responsive Utilities per l'applicazione Brumbrum */
+
+/* Variabili CSS responsive */
+:root {
+  --container-padding: 40px;
+  --font-size-base: 16px;
+  --font-size-large: 24px;
+  --font-size-xlarge: 32px;
+  --border-radius: 12px;
+  --spacing-small: 8px;
+  --spacing-medium: 16px;
+  --spacing-large: 24px;
+  --spacing-xlarge: 32px;
+}
+
+/* Breakpoints standard */
+/* 
+  Mobile: 320px - 767px
+  Tablet: 768px - 1023px  
+  Desktop: 1024px+
+*/
+
+/* Utility classes per layout responsive */
+.container-responsive {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.flex-responsive {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-medium);
+}
+
+.grid-responsive {
+  display: grid;
+  gap: var(--spacing-medium);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* Text scaling responsive */
+.text-responsive {
+  font-size: clamp(14px, 2.5vw, var(--font-size-base));
+  line-height: 1.6;
+}
+
+.title-responsive {
+  font-size: clamp(24px, 5vw, var(--font-size-xlarge));
+  line-height: 1.2;
+}
+
+/* Spacing responsive */
+.padding-responsive {
+  padding: clamp(16px, 4vw, var(--spacing-xlarge));
+}
+
+.margin-responsive {
+  margin: clamp(8px, 2vw, var(--spacing-large)) 0;
+}
+
+/* Hide/show utilities */
+.mobile-only {
+  display: none;
+}
+
+.desktop-only {
+  display: block;
+}
+
+/* Tablet Grande - 1200px */
+@media (max-width: 1200px) {
+  :root {
+    --container-padding: 32px;
+    --font-size-base: 15px;
+    --font-size-large: 22px;
+    --font-size-xlarge: 28px;
+  }
+}
+
+/* Tablet - 1024px */
+@media (max-width: 1024px) {
+  :root {
+    --container-padding: 24px;
+    --spacing-medium: 14px;
+    --spacing-large: 20px;
+    --spacing-xlarge: 28px;
+  }
+  
+  .flex-responsive {
+    flex-direction: column;
+    gap: var(--spacing-medium);
+  }
+  
+  .grid-responsive {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+}
+
+/* Tablet Piccolo - 768px */
+@media (max-width: 768px) {
+  :root {
+    --container-padding: 20px;
+    --font-size-base: 14px;
+    --font-size-large: 20px;
+    --font-size-xlarge: 24px;
+    --border-radius: 10px;
+    --spacing-small: 6px;
+    --spacing-medium: 12px;
+    --spacing-large: 18px;
+    --spacing-xlarge: 24px;
+  }
+  
+  .mobile-only {
+    display: block;
+  }
+  
+  .desktop-only {
+    display: none;
+  }
+  
+  .grid-responsive {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-small);
+  }
+}
+
+/* Mobile Grande - 480px */
+@media (max-width: 480px) {
+  :root {
+    --container-padding: 16px;
+    --font-size-base: 13px;
+    --font-size-large: 18px;
+    --font-size-xlarge: 22px;
+    --border-radius: 8px;
+    --spacing-small: 4px;
+    --spacing-medium: 8px;
+    --spacing-large: 12px;
+    --spacing-xlarge: 16px;
+  }
+}
+
+/* Mobile Piccolo - 375px */
+@media (max-width: 375px) {
+  :root {
+    --container-padding: 12px;
+    --font-size-base: 12px;
+    --font-size-large: 16px;
+    --font-size-xlarge: 20px;
+    --border-radius: 6px;
+  }
+}
+
+/* Mobile Extra Piccolo - 320px */
+@media (max-width: 320px) {
+  :root {
+    --container-padding: 8px;
+    --font-size-base: 11px;
+    --font-size-large: 14px;
+    --font-size-xlarge: 18px;
+    --spacing-small: 2px;
+    --spacing-medium: 4px;
+    --spacing-large: 8px;
+    --spacing-xlarge: 12px;
+  }
+}
+
+/* Orientamento landscape per mobile */
+@media (max-width: 768px) and (orientation: landscape) and (max-height: 500px) {
+  .container-responsive {
+    padding: 8px var(--container-padding);
+  }
+  
+  .flex-responsive {
+    flex-direction: row;
+    gap: var(--spacing-small);
+  }
+  
+  .grid-responsive {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .text-responsive,
+  .title-responsive {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Ottimizzazioni per touch devices */
+@media (hover: none) and (pointer: coarse) {
+  /* Aumenta le aree di touch target */
+  button, 
+  .clickable {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Disabilita gli effetti hover che non funzionano su touch */
+  .stat-card:hover,
+  .show-more-btn:hover,
+  .close-btn:hover {
+    transform: none;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.8);
+    --bg-primary: #0a0a0f;
+    --bg-secondary: #151520;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .mobile-only,
+  .hamburger-btn,
+  .mobile-menu-overlay {
+    display: none !important;
+  }
+  
+  .container-responsive {
+    max-width: none;
+    padding: 0;
+  }
+  
+  * {
+    color: #000 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+}

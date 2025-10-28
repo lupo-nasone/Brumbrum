@@ -1,63 +1,28 @@
-<!--
-  📄 LISTINO-DUCATI.VUE - PAGINA LISTINO INTERATTIVO MULTI-MARCA
-  
-  🎯 SCOPO:
-  - Visualizza il listino interattivo delle motociclette di tutte le marche
-  - Permette navigazione tra marche e modelli con interfaccia dinamica
-  - Mostra dettagli tecnici e statistiche delle moto
-  
-  🏗️ STRUTTURA:
-  - Database completo di tutte le moto con immagini e specifiche
-  - Sistema di navigazione responsive (desktop + mobile hamburger menu)
-  - Modal per visualizzazione dettagli tecnici avanzati
-  - Componenti MotoBrief e MotoDetailsModal integrati
-  
-  🎨 DESIGN:
-  - Layout split-screen: moto principale a sinistra, navigazione in basso
-  - Tema dark futuristico con gradienti e effetti glass-morphism
-  - Menu hamburger per mobile con animazioni fluide
-  - Hover effects e transizioni animate
-  
-  🔧 FUNZIONALITÀ:
-  - Selezione marca tramite menu mobile responsive
-  - Click sui thumbnail per cambiare moto visualizzata
-  - Animazioni smooth per cambio immagine
-  - Modal con statistiche complete e comparazioni
-  - Integrazione con database moto per dati tecnici
--->
-
 <script setup>
-// Import del logo principale Ducati
 import Logo from "../assets/Loghi/Ducati-Logo.png";
 
-// Import delle immagini moto Ducati
 import PanigaleV2 from "../assets/Moto/Ducati/PanigaleV2.png";
 import PanigaleV4 from "../assets/Moto/Ducati/PanigaleV4.png";
 import PanigaleV4S from "../assets/Moto/Ducati/PanigaleV4s.png";
 import PanigaleV4SP2 from "../assets/Moto/Ducati/PanigaleV4sp2.png";
 import PanigaleV4R from "../assets/Moto/Ducati/PanigaleV4r.png";
 
-// Import delle immagini moto Kawasaki
 import ZX10R from "../assets/Moto/Kawasaki/NinjaZX10R.png";
 import Ninja650 from "../assets/Moto/Kawasaki/Ninja650.png";
 import Ninja400 from "../assets/Moto/Kawasaki/Ninja400.png";
 
-// Import delle immagini moto Yamaha
 import R125 from "../assets/Moto/Yamaha/R125.png";
 import R3 from "../assets/Moto/Yamaha/r3.png";
 import R6 from "../assets/Moto/Yamaha/r6.png";
 import R1 from "../assets/Moto/Yamaha/r1.png";
 
-// Import delle immagini moto Keeway
 import RKF125 from "../assets/Moto/keeway/rkf.png";
 import Superleggera from "../assets/Moto/keeway/superlight.png";
 
-// Import delle immagini moto Wottan
 import wottangp1 from "../assets/Moto/Wottan/wottangp1.png";
 import wottangp2 from "../assets/Moto/Wottan/wottangp2.png";
 import rebbe from "../assets/Moto/Wottan/rebbe.png";
 
-// Import delle funzionalità Vue e routing
 import { RouterView, RouterLink } from "vue-router";    
 import { ref, computed } from "vue";
 import { useStore } from '../store/store.js'
@@ -65,19 +30,19 @@ import { getMotoStats, getMotoMainStats } from '../data/motoDatabase.js'
 import MotoBrief from '../components/MotoBrief.vue'
 import MotoDetailsModal from '../components/MotoDetailsModal.vue'
 
-// Inizializzazione dello store globale
 const store = useStore()
+
 console.log(store.index)
 
-// Variabili reattive per gestire lo stato dell'interfaccia
-let variabile = ref(0);                    // Indice della moto attualmente selezionata
-const showModal = ref(false);              // Controllo visibilità modal dettagli
-const selectedMotoStats = ref({});         // Statistiche moto selezionata per modal
-const selectedMotoImage = ref('');         // Immagine moto per modal
-const isMobileMenuOpen = ref(false);       // Stato menu mobile hamburger
-const currentBrandIndex = ref(0);          // Indice marca attualmente selezionata
+// Variabili reattive
+let variabile = ref(0);
+const showModal = ref(false);
+const selectedMotoStats = ref({});
+const selectedMotoImage = ref('');
+const isMobileMenuOpen = ref(false);
+const currentBrandIndex = ref(0);
 
-// Array di tutte le marche per il menu di navigazione mobile
+// Array di tutte le marche per il menu mobile
 const allBrands = [
   { nome: 'Ducati', logo: Logo },
   { nome: 'Yamaha', logo: '/src/assets/Loghi/yamaha.png' },
@@ -86,7 +51,7 @@ const allBrands = [
   { nome: 'Wottan', logo: '/src/assets/Loghi/Wottan-Logo.png' }
 ];
 
-// Funzioni per la gestione del menu mobile hamburger
+// Funzioni per il menu mobile
 function toggleMobileMenu() {
   isMobileMenuOpen.value = !isMobileMenuOpen.value;
 }
@@ -95,16 +60,12 @@ function closeMobileMenu() {
   isMobileMenuOpen.value = false;
 }
 
-/**
- * Seleziona una marca dal menu mobile
- * @param {number} index - Indice della marca selezionata
- */
 function selectBrand(index) {
   currentBrandIndex.value = index;
   store.index = index;
   variabile.value = 0; // Reset alla prima moto della marca
   
-  // Aggiorna dinamicamente l'immagine e le informazioni visualizzate
+  // Aggiorna l'immagine e le info
   if (moto[index] && moto[index].moto[0]) {
     document.getElementById("a").src = moto[index].moto[0].image;
     document.getElementById("b").innerHTML = moto[index].moto[0].nome;
@@ -114,8 +75,7 @@ function selectBrand(index) {
   closeMobileMenu();
 }
 
-// Mapping tra nomi delle moto visualizzati e chiavi del database
-// Necessario per collegare l'interfaccia ai dati tecnici
+// Mapping tra nomi delle moto e chiavi del database
 const motoMapping = {
   'ducati': {
     'PanigaleV2': 'panigalev2',
@@ -503,7 +463,7 @@ function info() {
   border: 2px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   cursor: pointer;
-  display: none;
+  display: none; /* Nascosto per default */
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -845,14 +805,23 @@ function info() {
   }
 }
 
-/* Tablet - 1024px */
+/* Tablet - 1024px - Mostra il menu hamburger */
 @media screen and (max-width: 1024px) {
+  .hamburger-btn {
+    display: flex; /* Mostra il menu hamburger */
+  }
+  
+  .foot {
+    display: none; /* Nasconde il footer di navigazione originale */
+  }
+  
   .container {
     flex-direction: column;
     height: auto;
     min-height: 100vh;
     padding: 15px;
   }
+}
   
   .title {
     width: 100%;
@@ -901,7 +870,6 @@ function info() {
     margin-top: 40px;
     padding: 20px;
   }
-}
 
 /* Tablet Piccolo - 768px */
 @media (max-width: 768px) {
@@ -1080,103 +1048,6 @@ function info() {
   .moto, .moto-mini {
     width: 100%;
     margin: 5px 0;
-  }
-}
-
-/* Mobile Grande - 480px */
-@media screen and (max-width: 480px) {
-  .container {
-    padding: 8px;
-    min-height: 100vh;
-  }
-  
-  .title {
-    margin-bottom: 20px;
-  }
-  
-  .title h1 {
-    font-size: 32px;
-    line-height: 1.1;
-    margin: 0;
-  }
-  
-  .moto {
-    width: 95%;
-    margin: 15px 0;
-  }
-  
-  .moto-mini {
-    width: 98%;
-    margin: 10px 0;
-  }
-  
-  .info {
-    display: none; /* Nascondo su mobile molto piccolo per risparmiare spazio */
-  }
-  
-  .foot {
-    padding: 12px;
-    flex-direction: column;
-    gap: 12px;
-  }
-  
-  .a {
-    width: 100%;
-    max-width: 200px;
-    height: 55px;
-    font-size: 13px;
-    margin: 0 auto;
-  }
-}
-
-/* Mobile Piccolo - 375px */
-@media screen and (max-width: 375px) {
-  .container {
-    padding: 5px;
-  }
-  
-  .title h1 {
-    font-size: 28px;
-  }
-  
-  .moto, .moto-mini {
-    width: 98%;
-    margin: 8px 0;
-  }
-  
-  .foot {
-    padding: 10px;
-    gap: 10px;
-  }
-  
-  .a {
-    height: 50px;
-    font-size: 12px;
-    max-width: 180px;
-  }
-}
-
-/* Mobile Extra Piccolo - 320px */
-@media screen and (max-width: 320px) {
-  .title h1 {
-    font-size: 24px;
-    line-height: 1;
-  }
-  
-  .moto, .moto-mini {
-    width: 100%;
-    margin: 5px 0;
-  }
-  
-  .foot {
-    padding: 8px;
-  }
-  
-  .a {
-    height: 45px;
-    font-size: 11px;
-    max-width: 160px;
-    padding: 8px 12px;
   }
 }
 </style>
